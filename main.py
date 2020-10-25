@@ -1,10 +1,18 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, jsonify
+from location import getLocations
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/locations', methods=('GET',))
+def test():
+    if not request.data:
+        return "No coordinates found!"
+    # return (request.json['coordinates'])
+    return  jsonify(getLocations(request.json['coordinates']))
 
 if __name__ == '__main__':
     # This is used when running locally only. When deploying to Google App
