@@ -7,12 +7,12 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/locations', methods=('GET',))
-def test():
+@app.route('/locations', methods=['GET', 'POST'])
+def findLocations():
     if not request.data:
         return "No coordinates found!"
-    # return (request.json['coordinates'])
-    return  jsonify(getLocations(request.json['coordinates']))
+    contents = request.get_json()
+    return  jsonify(getLocations(contents['coordinates']))
 
 if __name__ == '__main__':
     # This is used when running locally only. When deploying to Google App
