@@ -9,10 +9,10 @@ def index():
 
 @app.route('/locations', methods=['GET', 'POST'])
 def findLocations():
-    if not request.data:
-        return "No coordinates found!"
-    contents = request.get_json()
-    return  jsonify(getLocations(contents['coordinates']))
+    # if not request.data:
+        #return "No coordinates found!"
+    contents = request.form['coordinates']
+    return  jsonify(getLocations(contents))
 
 if __name__ == '__main__':
     # This is used when running locally only. When deploying to Google App

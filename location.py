@@ -1,6 +1,5 @@
 import googlemaps
-
-API_KEY = "AIzaSyA7pSNKto5Cdp-IIi9D0e5msQdmE_2KkeM"
+from secret import *
 
 def getLocations(coordinates='30.264980,-97.746597'):
     gmaps = googlemaps.Client(key=API_KEY)
